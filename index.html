@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Phantasmagoric World | Mixed Media Digital Collages by Jacob Degen Atkins</title>
+    <meta name="title" content="Phantasmagoric World | Mixed Media Digital Collages by Jacob Degen Atkins">
+    <meta name="description" content="Explore the phantasmagoric digital collage artworks of Jacob Degen Atkins. A unique blend of mixed media art featuring figure studies, nature, and ethereal compositions.">
+    <meta name="keywords" content="digital collage, mixed media art, Jacob Degen Atkins, phantasmagoric art, figure studies, contemporary art, digital artist, queer art, gay art">
+    <meta name="author" content="Jacob Degen Atkins">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/">
+    <meta property="og:title" content="Phantasmagoric World | Mixed Media Digital Collages">
+    <meta property="og:description" content="Explore the phantasmagoric digital collage artworks of Jacob Degen Atkins. A unique blend of mixed media art featuring figure studies, nature, and ethereal compositions.">
+    <meta property="og:image" content="https://i.imgur.com/CYgvVug.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourwebsite.com/">
+    <meta property="twitter:title" content="Phantasmagoric World | Mixed Media Digital Collages">
+    <meta property="twitter:description" content="Explore the phantasmagoric digital collage artworks of Jacob Degen Atkins. A unique blend of mixed media art featuring figure studies, nature, and ethereal compositions.">
+    <meta property="twitter:image" content="https://i.imgur.com/CYgvVug.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.manifest">
+    
+    <!-- Fonts and Styles (your existing links) -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ArtGallery",
+      "name": "Phantasmagoric World",
+      "author": {
+        "@type": "Person",
+        "name": "Jacob Degen Atkins"
+      },
+      "description": "Digital collage and mixed media artwork gallery featuring phantasmagoric compositions",
+      "image": "https://i.imgur.com/CYgvVug.png",
+      "url": "https://yourwebsite.com",
+      "hasMap": "https://yourwebsite.com/sitemap.xml",
+      "artform": ["Digital Collage", "Mixed Media", "Digital Art"],
+      "keywords": "digital collage, mixed media art, Jacob Degen Atkins, phantasmagoric art, figure studies, queer art, gay art"
+    }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: white;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
+
+        .banner-container {
+            max-width: 750px;
+            margin: 0 auto 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            margin: 20px 0 0;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 16px;
+            color: #171616;
+            margin: 8px 0;
+            font-weight: normal;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 15px;
+            max-width: 1400px;
+            margin: 0 auto;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90vh;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: pan-y pinch-zoom;
+            overflow: hidden;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+            touch-action: pan-y pinch-zoom;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 10px auto;
+                max-width: 95%;
+            }
+
+            .modal-image {
+                max-height: 85vh;
+            }
+        }
+
+        .modal-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            padding: 15px;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .modal-nav .material-icons {
+            font-size: 24px;
+        }
+
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-nav:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+                padding: 10px;
+            }
+
+            .modal-prev {
+                left: 10px;
+            }
+
+            .modal-next {
+                right: 10px;
+            }
+        }
+
+        /* Touch-specific styles */
+        @media (hover: none) {
+            .modal-nav {
+                opacity: 1;
+                background: rgba(0, 0, 0, 0.7);
+            }
+        }
+
+        .close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
+        }
+
+        .close:hover {
+            transform: rotate(90deg);
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        @media (max-width: 1200px) {
+            .gallery {
+                grid-template-columns: repeat(5, 1fr);
+                grid-template-rows: repeat(4, auto);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(10, auto);
+            }
+            
+            h1 {
+                font-size: 32px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-container">
+        <div class="banner-container">
+            <img src="https://i.imgur.com/CYgvVug.png" alt="Phantasmagoric World Banner" style="width: 100%; height: auto;">
+        </div>
+        <h1>Phantasmagoric World</h1>
+        <h2>Mixed media digital collages by Jacob Degen Atkins</h2>
+    </div>
+
+    <div class="gallery">
+        <!-- First Row -->
+        <div class="image-container" onclick="openModal('artwork1')">
+            <img src="https://i.imgur.com/yLfIlOY.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork2')">
+            <img src="https://i.imgur.com/1OaNBCd.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork3')">
+            <img src="https://i.imgur.com/0jFcMbN.jpg" alt="Urban figure study">
+        </div>
+        <div class="image-container" onclick="openModal('artwork4')">
+            <img src="https://i.imgur.com/gmfTR8d.jpg" alt="Abstract figure">
+        </div>
+        <div class="image-container" onclick="openModal('artwork5')">
+            <img src="https://i.imgur.com/CbLgi5Y.jpg" alt="Nature portrait">
+        </div>
+        <div class="image-container" onclick="openModal('artwork6')">
+            <img src="https://i.imgur.com/aPIuusO.jpg" alt="Ethereal composition">
+        </div>
+        <div class="image-container" onclick="openModal('artwork7')">
+            <img src="https://i.imgur.com/nuCoyMa.jpg" alt="New artwork 1">
+        </div>
+        <div class="image-container" onclick="openModal('artwork8')">
+            <img src="https://i.imgur.com/f19gq7y.jpg" alt="New artwork 2">
+        </div>
+        <div class="image-container" onclick="openModal('artwork9')">
+            <img src="https://i.imgur.com/8VWhOa8.jpg" alt="New artwork 3">
+        </div>
+        <div class="image-container" onclick="openModal('artwork10')">
+            <img src="https://i.imgur.com/boQD6JQ.jpg" alt="New artwork 4">
+        </div>
+
+        <!-- Second Row -->
+        <div class="image-container" onclick="openModal('artwork11')">
+            <img src="https://i.imgur.com/VoOcZEJ.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork12')">
+            <img src="https://i.imgur.com/zgrqJNY.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork13')">
+            <img src="https://i.imgur.com/CvbunBR.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork14')">
+            <img src="https://i.imgur.com/vhKwGm9.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork15')">
+            <img src="https://i.imgur.com/Ux3RI92.jpg" alt="New artwork 2">
+        </div>
+        <div class="image-container" onclick="openModal('artwork16')">
+            <img src="https://i.imgur.com/wvHHoWC.jpg" alt="New artwork 3">
+        </div>
+        <div class="image-container" onclick="openModal('artwork17')">
+            <img src="https://i.imgur.com/lTH1Rny.jpg" alt="New artwork 4">
+        </div>
+        <div class="image-container" onclick="openModal('artwork18')">
+            <img src="https://i.imgur.com/pH8yE5n.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork19')">
+            <img src="https://i.imgur.com/Ud6Ygh1.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork20')">
+            <img src="https://i.imgur.com/khsI1WA.jpg" alt="Figure with spirit animal">
+        </div>
+
+         <!-- Third Row -->
+         <div class="image-container" onclick="openModal('artwork11')">
+            <img src="https://i.imgur.com/v5RYca8.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork12')">
+            <img src="https://i.imgur.com/8b6FfN1.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork13')">
+            <img src="https://i.imgur.com/fuuRtPd.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork14')">
+            <img src="https://i.imgur.com/hLB1nV6.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork15')">
+            <img src="https://i.imgur.com/gFIbghx.jpg" alt="New artwork 2">
+        </div>
+        <div class="image-container" onclick="openModal('artwork16')">
+            <img src="https://i.imgur.com/P6imDUj.jpg" alt="New artwork 3">
+        </div>
+        <div class="image-container" onclick="openModal('artwork17')">
+            <img src="https://i.imgur.com/taNgNI3.jpg" alt="New artwork 4">
+        </div>
+        <div class="image-container" onclick="openModal('artwork18')">
+            <img src="https://i.imgur.com/IvHvyeI.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork19')">
+            <img src="https://i.imgur.com/V8ka6iY.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork20')">
+            <img src="https://i.imgur.com/dllpxCJ.jpg" alt="Figure with spirit animal">
+        </div>
+          <!-- Fourth Row -->
+          <div class="image-container" onclick="openModal('artwork11')">
+            <img src="https://i.imgur.com/jwbt3DG.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork12')">
+            <img src="https://i.imgur.com/79YP5Kt.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork13')">
+            <img src="https://i.imgur.com/iPzXAMB.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork14')">
+            <img src="https://i.imgur.com/y4ml4aG.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork15')">
+            <img src="https://i.imgur.com/YEtuMCW.jpg" alt="New artwork 2">
+        </div>
+        <div class="image-container" onclick="openModal('artwork16')">
+            <img src="https://i.imgur.com/Q0dOMCI.jpg" alt="New artwork 3">
+        </div>
+        <div class="image-container" onclick="openModal('artwork17')">
+            <img src="https://i.imgur.com/FOlGNJx.jpg" alt="New artwork 4">
+        </div>
+        <div class="image-container" onclick="openModal('artwork18')">
+            <img src="https://i.imgur.com/BkiVsUr.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork19')">
+            <img src="https://i.imgur.com/aX9rGI8.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork20')">
+            <img src="https://i.imgur.com/Kjy8weu.jpg" alt="Figure with spirit animal">
+        </div>
+         <!-- Fifth Row -->
+         <div class="image-container" onclick="openModal('artwork11')">
+            <img src="https://i.imgur.com/OcPFmJ4.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork12')">
+            <img src="https://i.imgur.com/ERdFTs6.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork13')">
+            <img src="https://i.imgur.com/bc5I6NU.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork14')">
+            <img src="https://i.imgur.com/g7aafKI.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork15')">
+            <img src="https://i.imgur.com/6xxrGkg.jpg" alt="New artwork 2">
+        </div>
+        <div class="image-container" onclick="openModal('artwork16')">
+            <img src="https://i.imgur.com/yNuV8Ge.jpg" alt="New artwork 3">
+        </div>
+        <div class="image-container" onclick="openModal('artwork17')">
+            <img src="https://i.imgur.com/oq9OQsP.jpg" alt="New artwork 4">
+        </div>
+        <div class="image-container" onclick="openModal('artwork18')">
+            <img src="https://i.imgur.com/Wh11qxd.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork19')">
+            <img src="https://i.imgur.com/C6jKZC2.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork20')">
+            <img src="https://i.imgur.com/xqQT4mg.jpg" alt="Figure with spirit animal">
+        </div>
+          <!-- Sixth Row -->
+          <div class="image-container" onclick="openModal('artwork11')">
+            <img src="https://i.imgur.com/gkqZb2g.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork12')">
+            <img src="https://i.imgur.com/87P2haB.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork13')">
+            <img src="https://i.imgur.com/WmwIBEx.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork14')">
+            <img src="https://i.imgur.com/OIOk3uS.jpg" alt="Figure with spirit animal">
+        </div>
+        <div class="image-container" onclick="openModal('artwork15')">
+            <img src="https://i.imgur.com/G1NCaDR.jpg" alt="New artwork 2">
+        </div>
+        <div class="image-container" onclick="openModal('artwork16')">
+            <img src="https://i.imgur.com/HW5BP8Z.jpg" alt="New artwork 3">
+        </div>
+        <div class="image-container" onclick="openModal('artwork17')">
+            <img src="https://i.imgur.com/9eRs4cr.jpg" alt="New artwork 4">
+        </div>
+        <div class="image-container" onclick="openModal('artwork18')">
+            <img src="https://i.imgur.com/ozUzJ79.jpg" alt="New artwork 5">
+        </div>
+        <div class="image-container" onclick="openModal('artwork19')">
+            <img src="https://i.imgur.com/3beXf9G.jpg" alt="Figure study in nature">
+        </div>
+        <div class="image-container" onclick="openModal('artwork20')">
+            <img src="https://i.imgur.com/0p7ktqU.jpg" alt="Figure with spirit animal">
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-nav modal-prev" onclick="navigateImage(-1)">
+                <span class="material-icons" style="color: white;">arrow_back_ios</span>
+            </div>
+            <div class="modal-nav modal-next" onclick="navigateImage(1)">
+                <span class="material-icons" style="color: white;">arrow_forward_ios</span>
+            </div>
+            <img id="modalImage" class="modal-image" src="" alt="Modal Image">
+        </div>
+    </div>
+
+    <script>
+        let currentImageIndex = 0;
+        let startX = 0;
+        let isDragging = false;
+        const images = document.querySelectorAll('.image-container img');
+        
+        function openModal(artworkId) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const clickedImage = event.currentTarget.querySelector('img');
+            
+            // Find the index of the clicked image
+            currentImageIndex = Array.from(images).findIndex(img => img.src === clickedImage.src);
+            
+            modalImg.src = clickedImage.src;
+            modal.style.display = "block";
+            
+            // Add keyboard navigation
+            document.addEventListener('keydown', handleKeyPress);
+            
+            // Add touch events for swipe
+            modalImg.addEventListener('touchstart', handleTouchStart);
+            modalImg.addEventListener('touchmove', handleTouchMove);
+            modalImg.addEventListener('touchend', handleTouchEnd);
+        }
+        
+        function handleTouchStart(event) {
+            startX = event.touches[0].clientX;
+            isDragging = true;
+        }
+        
+        function handleTouchMove(event) {
+            if (!isDragging) return;
+            event.preventDefault();
+            const currentX = event.touches[0].clientX;
+            const diff = startX - currentX;
+            
+            // Determine swipe direction based on difference
+            if (Math.abs(diff) > 50) {
+                isDragging = false;
+                if (diff > 0) {
+                    navigateImage(1); // Swipe left to go next
+                } else {
+                    navigateImage(-1); // Swipe right to go previous
+                }
+            }
+        }
+        
+        function handleTouchEnd() {
+            isDragging = false;
+        }
+        
+        function closeModal() {
+            document.getElementById('imageModal').style.display = "none";
+            document.removeEventListener('keydown', handleKeyPress);
+        }
+        
+        function navigateImage(direction) {
+            currentImageIndex = (currentImageIndex + direction + images.length) % images.length;
+            const modalImg = document.getElementById('modalImage');
+            modalImg.src = images[currentImageIndex].src;
+        }
+        
+        function handleKeyPress(event) {
+            switch(event.key) {
+                case "ArrowLeft":
+                    navigateImage(-1);
+                    break;
+                case "ArrowRight":
+                    navigateImage(1);
+                    break;
+                case "Escape":
+                    closeModal();
+                    break;
+            }
+        }
+        
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
