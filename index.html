@@ -26,10 +26,10 @@
     <meta property="twitter:image" content="https://i.imgur.com/CYgvVug.png">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="manifest" href="/site.manifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/5FSK81C.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/5FSK81C.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/5FSK81C.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/5FSK81C.png">
     
     <!-- Fonts and Styles (your existing links) -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -54,6 +54,20 @@
     }
     </script>
     <style>
+ /* Copyright notice */
+#copyright-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 65%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    z-index: 9999;
+    font-size: 12px;
+}
         body {
             margin: 0;
             padding: 20px;
@@ -284,23 +298,6 @@
             }
         }
 
-/* Copyright notice */
-.copyright-notice {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 12px;
-            z-index: 1000;
-            text-align: center;
-            width: auto;
-            white-space: nowrap;
-        }
-
         @media (max-width: 768px) {
             /* Your existing mobile styles... */
         }
@@ -507,9 +504,9 @@
         </div>
     </div>
 <br>
-      <!-- Copyright Notice -->
-      <div class="copyright-notice">
-    © 2025 Jacob Degen Atkins. All rights reserved. Unauthorized use or reproduction prohibited.
+<!-- Copyright Notice -->
+<div id="copyright-bar">
+    © 2025 Jacob Degen Atkins. All rights reserved. Unauthorized use or reproduction prohibited. | Contact: jacobsonatkins@gmail.com
 </div>
 
     <!-- Modal -->
