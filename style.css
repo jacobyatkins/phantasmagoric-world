@@ -487,8 +487,7 @@ img {
 .image-container[onclick="openModal('Francois and Dog')"] {
     display: none;
 }
-</style>
-
 .image-container[onclick="openModal('Titan')"] {
     display: none;
 }
+</style>
