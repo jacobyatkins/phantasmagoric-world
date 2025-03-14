@@ -11,20 +11,6 @@
     <meta name="keywords" content="digital collage, mixed media art, Jacob Degen Atkins, phantasmagoric art, figure studies, contemporary art, digital artist, queer art, gay art">
     <meta name="author" content="Jacob Degen Atkins">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourwebsite.com/">
-    <meta property="og:title" content="Phantasmagoric World | Mixed Media Digital Collages">
-    <meta property="og:description" content="Explore the phantasmagoric digital collage artworks of Jacob Degen Atkins. A unique blend of mixed media art featuring figure studies, nature, and ethereal compositions.">
-    <meta property="og:image" content="https://i.imgur.com/CYgvVug.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourwebsite.com/">
-    <meta property="twitter:title" content="Phantasmagoric World | Mixed Media Digital Collages">
-    <meta property="twitter:description" content="Explore the phantasmagoric digital collage artworks of Jacob Degen Atkins. A unique blend of mixed media art featuring figure studies, nature, and ethereal compositions.">
-    <meta property="twitter:image" content="https://i.imgur.com/CYgvVug.png">
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/5FSK81C.png">
     <link rel="icon" type="image/png" sizes="16x16" href="https://i.imgur.com/5FSK81C.png">
@@ -53,255 +39,9 @@
       "keywords": "digital collage, mixed media art, Jacob Degen Atkins, phantasmagoric art, figure studies, queer art, gay art"
     }
     </script>
-    <style>
- /* Copyright notice */
-#copyright-bar {
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 65%;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 9999;
-    font-size: 12px;
-}
-        body {
-            margin: 0;
-            padding: 20px;
-            background: white;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-
-        .header-container {
-            max-width: 1400px;
-            margin: 0 auto 40px;
-            text-align: center;
-        }
-
-        .banner-container {
-            max-width: 750px;
-            margin: 0 auto 20px;
-        }
-
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            margin: 20px 0 0;
-            color: #1a1a1a;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            font-size: 16px;
-            color: #171616;
-            margin: 8px 0;
-            font-weight: normal;
-        }
-
-        .gallery {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(4, auto);
-    gap: 15px;
-    max-width: 1400px;
-    margin: 0 auto;
-    justify-content: center;
-    padding: 0;
-}
-
-        .image-container {
-            position: relative;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            
-            
-        }
-
-        .image-container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: contain;
-            
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90vh;
-            margin: 20px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            touch-action: pan-y pinch-zoom;
-            overflow: hidden;
-        }
-
-        .modal-image {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.3);
-            touch-action: pan-y pinch-zoom;
-            -webkit-user-select: none;
-            user-select: none;
-        }
-
-        @media (max-width: 768px) {
-            .modal-content {
-                margin: 10px auto;
-                max-width: 95%;
-            }
-
-            .modal-image {
-                max-height: 85vh;
-            }
-        }
-
-        .modal-nav {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            padding: 15px;
-            transition: all 0.3s ease;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1001;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-        }
-
-        .modal-nav .material-icons {
-            font-size: 24px;
-        }
-
-        .modal-nav:hover {
-            background: rgba(0, 0, 0, 0.9);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .modal-nav:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-
-        .modal-prev {
-            left: 20px;
-        }
-
-        .modal-next {
-            right: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .modal-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 24px;
-                padding: 10px;
-            }
-
-            .modal-prev {
-                left: 10px;
-            }
-
-            .modal-next {
-                right: 10px;
-            }
-        }
-
-        /* Touch-specific styles */
-        @media (hover: none) {
-            .modal-nav {
-                opacity: 1;
-                background: rgba(0, 0, 0, 0.7);
-            }
-        }
-
-        .close {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            color: white;
-            font-size: 35px;
-            cursor: pointer;
-            transition: transform 0.2s ease;
-            background: rgba(0, 0, 0, 0.5);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1001;
-        }
-
-        .close:hover {
-            transform: rotate(90deg);
-            background: rgba(0, 0, 0, 0.8);
-        }
-
-        @media (max-width: 1200px) {
-    .gallery {
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(7, auto);
-    }
-}
-
-@media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(10, auto);
-    }
-}
-            
-            h1 {
-                font-size: 32px;
-            }
-            
-            body {
-                padding: 10px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            /* Your existing mobile styles... */
-        }
-    </style>
+   
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
 
@@ -314,15 +54,14 @@
     </div>
 
     <div class="gallery">
-        <!-- First Row -->
         <div class="image-container" onclick="openModal('artwork1')">
-            <img src="https://i.imgur.com/yLfIlOY.jpg" alt="Figure study in nature">
+            <img src="images/1.jpg" alt="Male figure study in nature">
         </div>
         <div class="image-container" onclick="openModal('artwork2')">
-            <img src="https://i.imgur.com/1OaNBCd.jpg" alt="Figure with spirit animal">
+            <img src="images/2.jpg" alt="Male figure study with dog">
         </div>
         <div class="image-container" onclick="openModal('artwork3')">
-            <img src="https://i.imgur.com/0jFcMbN.jpg" alt="Urban figure study">
+            <img src="images/3.jpg" alt="Male figure study with urban background">
         </div>
         <div class="image-container" onclick="openModal('artwork4')">
             <img src="https://i.imgur.com/gmfTR8d.jpg" alt="Abstract figure">
@@ -345,8 +84,6 @@
         <div class="image-container" onclick="openModal('artwork10')">
             <img src="https://i.imgur.com/boQD6JQ.jpg" alt="New artwork 4">
         </div>
-
-        <!-- Second Row -->
         <div class="image-container" onclick="openModal('artwork11')">
             <img src="https://i.imgur.com/VoOcZEJ.jpg" alt="New artwork 5">
         </div>
@@ -377,8 +114,6 @@
         <div class="image-container" onclick="openModal('artwork20')">
             <img src="https://i.imgur.com/khsI1WA.jpg" alt="Figure with spirit animal">
         </div>
-
-         <!-- Third Row -->
          <div class="image-container" onclick="openModal('artwork11')">
             <img src="https://i.imgur.com/v5RYca8.jpg" alt="New artwork 5">
         </div>
@@ -409,7 +144,6 @@
         <div class="image-container" onclick="openModal('artwork20')">
             <img src="https://i.imgur.com/dllpxCJ.jpg" alt="Figure with spirit animal">
         </div>
-          <!-- Fourth Row -->
           <div class="image-container" onclick="openModal('artwork11')">
             <img src="https://i.imgur.com/jwbt3DG.jpg" alt="New artwork 5">
         </div>
@@ -440,7 +174,6 @@
         <div class="image-container" onclick="openModal('artwork20')">
             <img src="https://i.imgur.com/Kjy8weu.jpg" alt="Figure with spirit animal">
         </div>
-         <!-- Fifth Row -->
          <div class="image-container" onclick="openModal('artwork11')">
             <img src="https://i.imgur.com/OcPFmJ4.jpg" alt="New artwork 5">
         </div>
@@ -471,7 +204,6 @@
         <div class="image-container" onclick="openModal('artwork20')">
             <img src="https://i.imgur.com/xqQT4mg.jpg" alt="Figure with spirit animal">
         </div>
-          <!-- Sixth Row -->
           <div class="image-container" onclick="openModal('artwork11')">
             <img src="https://i.imgur.com/gkqZb2g.jpg" alt="New artwork 5">
         </div>
@@ -504,8 +236,7 @@
         </div>
     </div>
 <br>
-<!-- Copyright Notice -->
-<div id="copyright-bar">
+<div id="copyright-bar" style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 65%; background-color: rgba(0, 0, 0, 0.7); color: white; text-align: center; padding: 10px 0; z-index: 9999; font-size: 12px;">
     © 2025 Jacob Degen Atkins. All rights reserved. Unauthorized use or reproduction prohibited. | Contact: jacobsonatkins@gmail.com
 </div>
 
@@ -607,6 +338,7 @@
             }
         }
     </script>
-    
+    <script src="js/art-protection.js"></script>
+
 </body>
 </html>
