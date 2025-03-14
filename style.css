@@ -1,5 +1,3 @@
-<style>
-
 /* Copyright notice */
 #copyright-bar {
     position: fixed;
@@ -492,4 +490,3 @@ img {
 .image-container[onclick="openModal('Titan')"] {
     display: none;
 }
-</style>
