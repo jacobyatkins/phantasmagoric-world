@@ -483,11 +483,4 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
-/* Hide specific artwork containers based on their onclick attributes */
-.image-container[onclick="openModal('Francois and Dog')"] {
-    display: none;
-}
-.image-container[onclick="openModal('Titan')"] {
-    display: none;
-}
 </style>
