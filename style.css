@@ -483,4 +483,148 @@ img {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Navigation Styles */
+.nav-container {
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    font-family: 'Playfair Display', serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-container a {
+    margin: 0 40px;
+    text-decoration: none;
+    color: #000;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.nav-container a:hover {
+    opacity: 0.7;
+}
+
+/* Active page indicator */
+.nav-container a.active {
+    font-weight: bold;
+}
+/* Add padding to the body to account for fixed navigation */
+body {
+    padding-top: 60px; /* Adjust this value based on the height of your navigation bar */
+}
+
+/* Make sure everything works on mobile too */
+@media screen and (max-width: 768px) {
+    .nav-container {
+        padding: 10px 0;
+    }
+    
+    .nav-container a {
+        margin: 0 20px;
+        font-size: 1rem;
+    }
+    
+    body {
+        padding-top: 50px; /* Slightly smaller padding for mobile */
+    }
+}
+.buy-print-btn {
+    display: block;
+    padding: 10px 20px;
+    color: white;
+    background-color: black;
+    border: 2px solid white;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px auto 0;
+    transition: all 0.3s ease;
+    width: fit-content;
+    text-align: center;
+}
+
+.buy-print-btn:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}
+/* Dropdown Category Navigation Styles */
+.category-dropdown {
+    position: relative;
+    display: inline-block;
+    margin: 20px auto 30px;
+    width: 200px;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+.dropdown-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.caret {
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.category-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.category-dropdown:hover .caret {
+    transform: rotate(180deg);
+}
+
+.category-option {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.category-option:hover {
+    background-color: #f1f1f1;
+}
+
+.category-option.active {
+    font-weight: bold;
+}
+
+/* Center the dropdown in the layout */
+.category-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
 </style>
