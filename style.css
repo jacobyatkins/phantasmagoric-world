@@ -1,4 +1,5 @@
 <style>
+
 /* Copyright notice */
 #copyright-bar {
     position: fixed;
@@ -293,61 +294,63 @@ img {
     padding-left: 15%; /* Added left padding to push content to the right */
 }
 
+/* Improved display container for image and info */
 .modal-display {
-    display: flex;
-    flex-direction: row; /* Changed from column to row */
-    align-items: flex-start;
     width: 100%;
-    position: relative;
-    justify-content: flex-start; /* Added to align image more to the right */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 20px;
 }
 
+/* Image styling */
 .modal-image {
-    max-width: 60%; /* Reduced to make room for the info panel */
-    max-height: 90vh;
+    max-width: 65%;
+    max-height: 80vh;
     object-fit: contain;
     border-radius: 8px;
-    box-shadow: 0 5px 25px rgba(0,0,0,0.3);
-    touch-action: pan-y pinch-zoom;
-    -webkit-user-select: none;
-    user-select: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .artwork-info {
     color: white;
-    padding: 0 0 0 40px;
+    width: 30%;
+    min-width: 250px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: left;
-    width: 350px;
-    position: absolute;
-    left: calc(50% - 50px); /* Changed from +150px to -50px to move left */
-    top: 50%;
-    transform: translateY(-50%);
 }
 
 .artwork-info h3 {
     font-family: 'Playfair Display', serif;
     font-size: 28px;
-    margin: 0 0 20px 0;
-    font-weight: 700;
+    margin: 0 0 15px 0;
+    width: 100%;
 }
 
 .artwork-info p {
     margin: 10px 0;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 100%;
 }
 
 .tags-container {
     display: flex;
-    flex-direction: column; /* Tags stacked vertically */
-    align-items: flex-start;
-    margin-top: 20px;
+    flex-wrap: wrap;
     gap: 10px;
+    margin-top: 20px;
+    width: 100%;
 }
 
 .artwork-tag {
     display: inline-block;
-    font-size: 18px;
-    text-transform: lowercase;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
 @media (max-width: 1200px) {
@@ -660,5 +663,89 @@ body {
 /* Ensure the hover state remains active during the transition */
 .category-dropdown:hover {
     z-index: 100; /* Higher z-index to ensure menu stays on top */
+}
+/* Image display fix */
+
+/* Reset the opacity to make images visible */
+img {
+    opacity: 1 !important; /* Override any opacity settings */
+    transition: none; /* Remove transitions temporarily */
+    visibility: visible !important;
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* Make sure image containers are properly sized */
+.image-container {
+    position: relative;
+    background-color: #f9f9f9;
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    min-height: 200px; /* Ensure a minimum height */
+}
+
+/* Ensure gallery images are visible */
+.gallery .image-container img {
+    position: relative; /* Change from absolute to relative */
+    top: auto;
+    left: auto;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Fix for the gallery layout */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: minmax(200px, auto);
+    gap: 15px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Ensure placeholder areas have background */
+.gallery .image-container:empty {
+    background-color: #e0e0e0;
+    min-height: 200px;
+}
+
+/* Remove any loading attributes */
+img[loading="lazy"] {
+    loading: auto !important;
+}
+
+/* Fix any potential conflicts with data attributes */
+img[data-src] {
+    content: attr(data-src);
+}
+
+/* Make sure images in modal are visible */
+.modal-image {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Reset aspect-ratio if it's causing problems */
+img[aspect-ratio] {
+    aspect-ratio: auto !important;
+}
+
+/* Ensure images with transforms are visible */
+img[style*="transform"] {
+    transform: none !important;
+}
+
+/* Remove will-change property that might cause issues */
+img[will-change], .image-container[will-change] {
+    will-change: auto !important;
+}
+
+/* Add proper box model */
+* {
+    box-sizing: border-box;
 }
 </style>
