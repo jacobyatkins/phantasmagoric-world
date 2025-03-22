@@ -627,27 +627,38 @@ body {
     justify-content: center;
     width: 100%;
 }
-/* Oval shape for dropdown button */
+/* Create a more seamless connection between button and dropdown */
 .dropdown-btn {
-    border-radius: 50px; /* Full rounded corners for oval shape */
-    padding: 10px 25px; /* Slightly more horizontal padding for oval appearance */
+    border-radius: 50px;
+    padding: 10px 25px;
+    position: relative; /* Add relative positioning */
+    z-index: 2; /* Ensure button stays above content */
+    border-bottom: 1px solid #ddd; /* Maintain border for closed state */
 }
 
-/* When dropdown is open, only modify the bottom corners */
-.category-dropdown:hover .dropdown-btn {
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
-/* Match the dropdown content width to the button for a cohesive look */
 .dropdown-content {
-    border-bottom-left-radius: 20px; /* Rounded bottom corners */
-    border-bottom-right-radius: 20px; /* Rounded bottom corners */
-    margin-top: 0;
-    border-top: none;
+    position: absolute;
+    top: 100%; /* Position directly at the bottom of the button */
+    left: 0;
+    margin-top: -1px; /* Negative margin to overlap the borders */
+    border-top: 1px solid #ddd; /* Match the button border */
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    min-width: 100%; /* Ensure it matches the button width */
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+/* When dropdown is hovered */
+.category-dropdown:hover .dropdown-btn {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-color: transparent; /* Hide the bottom border when open */
+}
+
+/* Ensure the hover state remains active during the transition */
+.category-dropdown:hover {
+    z-index: 100; /* Higher z-index to ensure menu stays on top */
 }
 </style>
