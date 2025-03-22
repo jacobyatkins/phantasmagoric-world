@@ -627,4 +627,27 @@ body {
     justify-content: center;
     width: 100%;
 }
+/* Oval shape for dropdown button */
+.dropdown-btn {
+    border-radius: 50px; /* Full rounded corners for oval shape */
+    padding: 10px 25px; /* Slightly more horizontal padding for oval appearance */
+}
+
+/* When dropdown is open, only modify the bottom corners */
+.category-dropdown:hover .dropdown-btn {
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Match the dropdown content width to the button for a cohesive look */
+.dropdown-content {
+    border-bottom-left-radius: 20px; /* Rounded bottom corners */
+    border-bottom-right-radius: 20px; /* Rounded bottom corners */
+    margin-top: 0;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    min-width: 100%; /* Ensure it matches the button width */
+}
 </style>
