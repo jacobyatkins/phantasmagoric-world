@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .modal-watermark {
               position: absolute !important;
                 /* MOBILE POSITIONING - ADJUST THESE VALUES */
-                bottom: 40% !important; /* Change this value to move up/down */
+                bottom: 80% !important; /* Change this value to move up/down */
                 left: 35% !important;   /* Change this value to move left/right */
                 transform: translate(-50%, -50%) !important;
                 width: ${watermarkSize} !important;
