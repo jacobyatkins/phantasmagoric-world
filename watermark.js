@@ -1,6 +1,7 @@
 /**
  * art-protection.js - Adds watermark signature to all artwork images
  * Created for Phantasmagoric World by Jacob Degen Atkins
+ * Enhanced for mobile responsiveness
  */
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -49,21 +50,30 @@ document.addEventListener('DOMContentLoaded', function() {
      * Sets up a watermark for the modal image
      */
     function setupModalWatermark() {
-        // Create a watermark element for the modal
+        // Create a consistent watermark for modal views
         const modalWatermark = document.createElement('img');
         modalWatermark.src = watermarkURL;
         modalWatermark.alt = 'JDA Signature';
-        modalWatermark.style.cssText = `
-            position: absolute;
-            top: 87.5%;
-            left: 35%;
-            transform: translate(-50%, -50%);
-            width: ${watermarkSize};
-            height: auto;
-            opacity: 0.8;
-            z-index: 2000;
-            pointer-events: none;
+        
+        // Add specific CSS to ensure consistent positioning across devices
+        const modalStyle = document.createElement('style');
+        modalStyle.textContent = `
+            .modal-image-wrapper {
+                position: relative !important;
+            }
+            .modal-watermark {
+                position: absolute !important;
+                bottom: 10% !important;
+                left: 35% !important;
+                transform: translate(-50%, -50%) !important;
+                width: ${watermarkSize} !important;
+                height: auto !important;
+                opacity: 0.8 !important;
+                z-index: 2000 !important;
+                pointer-events: none !important;
+            }
         `;
+        document.head.appendChild(modalStyle);
         
         // Add the watermark whenever the modal is opened
         const imageContainers = document.querySelectorAll('.image-container');
@@ -72,56 +82,48 @@ document.addEventListener('DOMContentLoaded', function() {
                 setTimeout(() => {
                     const modalImage = document.querySelector('#modalImage');
                     if (modalImage) {
-                        const modalImageContainer = modalImage.parentElement;
+                        const modalContainer = modalImage.parentElement;
+                        if (!modalContainer) return;
                         
-                        // Position the container relatively for absolute positioning of watermark
-                        if (modalImageContainer && modalImageContainer.style) {
-                            modalImageContainer.style.position = 'relative';
-                            
-                            // Add watermark to the modal image container
-                            const watermarkClone = modalWatermark.cloneNode(true);
-                            
-                            // Remove any existing watermarks first
-                            const existingWatermarks = modalImageContainer.querySelectorAll('.modal-watermark');
-                            existingWatermarks.forEach(w => w.remove());
-                            
-                            // Add class for potential CSS targeting
-                            watermarkClone.classList.add('modal-watermark');
-                            
-                            modalImageContainer.appendChild(watermarkClone);
-                        }
+                        // Ensure we have a container with relative positioning
+                        modalContainer.style.position = 'relative';
+                        
+                        // Remove any existing watermarks
+                        const existingWatermarks = document.querySelectorAll('.modal-watermark');
+                        existingWatermarks.forEach(w => w.remove());
+                        
+                        // Add watermark using the same positioning as desktop
+                        const watermarkClone = modalWatermark.cloneNode(true);
+                        watermarkClone.classList.add('modal-watermark');
+                        modalContainer.appendChild(watermarkClone);
                     }
-                }, 100);
+                }, 150);
             });
         });
         
-        // Also add the watermark when navigating through modal images
+        // Same for navigation buttons
         const navButtons = document.querySelectorAll('.modal-nav');
         navButtons.forEach(button => {
             button.addEventListener('click', () => {
                 setTimeout(() => {
                     const modalImage = document.querySelector('#modalImage');
                     if (modalImage) {
-                        const modalImageContainer = modalImage.parentElement;
+                        const modalContainer = modalImage.parentElement;
+                        if (!modalContainer) return;
                         
-                        // Position the container relatively for absolute positioning of watermark
-                        if (modalImageContainer && modalImageContainer.style) {
-                            modalImageContainer.style.position = 'relative';
-                            
-                            // Add watermark to the modal image container
-                            const watermarkClone = modalWatermark.cloneNode(true);
-                            
-                            // Remove any existing watermarks first
-                            const existingWatermarks = modalImageContainer.querySelectorAll('.modal-watermark');
-                            existingWatermarks.forEach(w => w.remove());
-                            
-                            // Add class for potential CSS targeting
-                            watermarkClone.classList.add('modal-watermark');
-                            
-                            modalImageContainer.appendChild(watermarkClone);
-                        }
+                        // Ensure we have a container with relative positioning
+                        modalContainer.style.position = 'relative';
+                        
+                        // Remove any existing watermarks
+                        const existingWatermarks = document.querySelectorAll('.modal-watermark');
+                        existingWatermarks.forEach(w => w.remove());
+                        
+                        // Add watermark using the same positioning as desktop
+                        const watermarkClone = modalWatermark.cloneNode(true);
+                        watermarkClone.classList.add('modal-watermark');
+                        modalContainer.appendChild(watermarkClone);
                     }
-                }, 100);
+                }, 150);
             });
         });
     }
