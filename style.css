@@ -665,4 +665,43 @@ body {
     z-index: 100; /* Higher z-index to ensure menu stays on top */
 }
 
+/* Add these styles to your existing CSS to move the title and medium text higher on mobile */
+
+@media (max-width: 768px) {
+    /* Adjust modal content padding to create more space at the top */
+    .modal-content {
+        padding-top: 10px;
+        margin-top: 10px;
+    }
+    
+    /* Move artwork info higher up */
+    .artwork-info {
+        padding-top: 0;
+        margin-top: -40px; /* Negative margin to pull it higher */
+    }
+    
+    /* Make title more prominent */
+    #artworkTitle {
+        margin-bottom: 8px; /* Reduced margin */
+        font-size: 24px; /* Slightly larger */
+    }
+    
+    /* Reduce spacing between elements */
+    #artworkMedium {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    
+    /* Adjust button position */
+    .buy-print-btn {
+        margin-top: 10px;
+    }
+    
+    /* Ensure content doesn't overflow beyond viewport */
+    body.modal-open {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+    }
+}
 </style>
