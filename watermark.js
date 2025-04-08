@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 position: absolute !important;
                 /* CENTER POSITIONING FOR ALL SCREENS */
                 top: 50% !important;
-                left: 50% !important;
+                left: 30% !important;
                 transform: translate(-50%, -50%) !important;
                 width: ${watermarkSize} !important;
                 height: auto !important;
