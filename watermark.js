@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalWatermark.style.cssText = `
             position: absolute;
             top: 87.5%;
-            left: 45%;
+            left: 35%;
             transform: translate(-50%, -50%);
             width: ${watermarkSize};
             height: auto;
