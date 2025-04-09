@@ -61,10 +61,12 @@ document.addEventListener('DOMContentLoaded', function() {
             .modal-image-wrapper {
                 position: relative !important;
             }
-            .modal-watermark {
+             .modal-watermark {
                 position: absolute !important;
-                bottom: 10% !important;
-                right: 10% !important;
+                /* Centered positioning for both desktop and mobile */
+                top: 50% !important;
+                left: 50% !important;
+                transform: translate(-50%, -50%) !important;
                 width: ${watermarkSize} !important;
                 height: auto !important;
                 opacity: 0.8 !important;
