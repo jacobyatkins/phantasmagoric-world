@@ -664,44 +664,33 @@ body {
 .category-dropdown:hover {
     z-index: 100; /* Higher z-index to ensure menu stays on top */
 }
-/* Mobile-only styles for artwork modal */
 @media (max-width: 768px) {
-    /* Adjust modal content to create proper spacing */
-    .modal-content {
-        padding-top: 10px;
-        top: 20% !important; /* Position modal content higher in viewport */
-    }
-    
-    /* Position artwork info directly below the image */
-    .artwork-info {
-        position: relative;
-        margin-top: 10px;
+    /* Position the modal image higher in the viewport */
+    .modal-dialog, .modal-content {
+        margin-top: 0;
         padding-top: 0;
     }
     
-    /* Style for artwork title */
-    #artworkTitle {
-        font-size: 28px;
-        margin-bottom: 5px;
+    /* Move the image higher in the modal */
+    #modalImage, .modal-image {
+        position: relative;
+        top: -120px; /* Move image up significantly */
+        margin-bottom: -100px; /* Prevent excess space below */
+        max-height: 50vh; /* Ensure image isn't too large */
     }
     
-    /* Adjust medium text styling */
-    #artworkMedium {
+    /* Ensure the artwork info stays with the image */
+    .artwork-info {
+        position: relative;
+        top: -100px; /* Move info up with the image */
+        margin-top: 10px;
+    }
+    
+    /* Adjust the modal container height */
+    .modal-body {
+        padding-top: 0;
         margin-top: 0;
-        margin-bottom: 10px;
     }
-    
-    /* Ensure image fits properly in the viewport */
-    #modalImage {
-        max-height: 60vh;
-        object-fit: contain;
-    }
-    
-    /* Prevent body scrolling when modal is open */
-    body.modal-open {
-        overflow: hidden;
-        position: fixed;
-        width: 100%;
-    }
+}
 }
 </style>
