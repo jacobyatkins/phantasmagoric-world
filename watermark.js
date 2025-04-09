@@ -61,17 +61,23 @@ document.addEventListener('DOMContentLoaded', function() {
             .modal-image-wrapper {
                 position: relative !important;
             }
-             .modal-watermark {
+          .modal-watermark {
                 position: absolute !important;
-                /* CENTER POSITIONING FOR ALL SCREENS */
-                top: 50% !important;
-                left: 30% !important;
+                /* MOBILE POSITIONING - ADJUST THESE VALUES */
+                bottom: 10% !important; /* Change this value to move up/down */
+                left: 35% !important;   /* Change this value to move left/right */
                 transform: translate(-50%, -50%) !important;
                 width: ${watermarkSize} !important;
                 height: auto !important;
                 opacity: 0.8 !important;
                 z-index: 2000 !important;
                 pointer-events: none !important;
+            }
+            /* Mobile-specific watermark styling */
+            @media (max-width: 768px) {
+                .modal-watermark {
+                    width: ${mobileWatermarkSize} !important; /* 30% smaller for mobile */
+               }
             }
         `;
         document.head.appendChild(modalStyle);
