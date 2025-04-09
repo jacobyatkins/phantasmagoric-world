@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalWatermark = document.createElement('img');
         modalWatermark.src = watermarkURL;
         modalWatermark.alt = 'JDA Signature';
+        modalWatermark.classList.add('modal-watermark');
         
         // Add specific CSS to ensure consistent positioning across devices
         const modalStyle = document.createElement('style');
@@ -61,77 +62,83 @@ document.addEventListener('DOMContentLoaded', function() {
             .modal-image-wrapper {
                 position: relative !important;
             }
-          .modal-watermark {
+            .modal-watermark {
                 position: absolute !important;
                 /* MOBILE POSITIONING - ADJUST THESE VALUES */
                 bottom: 10% !important; /* Change this value to move up/down */
-                left: 35% !important;   /* Change this value to move left/right */
-                transform: translate(-50%, -50%) !important;
+                right: 10% !important;   /* Changed from left to right for better positioning */
                 width: ${watermarkSize} !important;
                 height: auto !important;
                 opacity: 0.8 !important;
                 z-index: 2000 !important;
                 pointer-events: none !important;
             }
-            /* Mobile-specific watermark styling */
-            @media (max-width: 768px) {
-                .modal-watermark {
-                    width: ${mobileWatermarkSize} !important; /* 30% smaller for mobile */
-               }
-            }
         `;
         document.head.appendChild(modalStyle);
+        
+        // Function to add watermark to modal
+        function addWatermarkToModal() {
+            const modalImage = document.getElementById('modalImage');
+            if (modalImage) {
+                // Find the modal display container
+                const modalContainer = modalImage.closest('.modal-display');
+                if (!modalContainer) return;
+                
+                // Ensure we have a container with relative positioning
+                modalContainer.style.position = 'relative';
+                
+                // Remove any existing watermarks
+                const existingWatermarks = document.querySelectorAll('.modal-watermark');
+                existingWatermarks.forEach(w => w.remove());
+                
+                // Add watermark
+                const watermarkClone = modalWatermark.cloneNode(true);
+                modalContainer.appendChild(watermarkClone);
+            }
+        }
         
         // Add the watermark whenever the modal is opened
         const imageContainers = document.querySelectorAll('.image-container');
         imageContainers.forEach(container => {
             container.addEventListener('click', () => {
-                setTimeout(() => {
-                    const modalImage = document.querySelector('#modalImage');
-                    if (modalImage) {
-                        const modalContainer = modalImage.parentElement;
-                        if (!modalContainer) return;
-                        
-                        // Ensure we have a container with relative positioning
-                        modalContainer.style.position = 'relative';
-                        
-                        // Remove any existing watermarks
-                        const existingWatermarks = document.querySelectorAll('.modal-watermark');
-                        existingWatermarks.forEach(w => w.remove());
-                        
-                        // Add watermark using the same positioning as desktop
-                        const watermarkClone = modalWatermark.cloneNode(true);
-                        watermarkClone.classList.add('modal-watermark');
-                        modalContainer.appendChild(watermarkClone);
-                    }
-                }, 150);
+                // Wait for modal to appear
+                setTimeout(addWatermarkToModal, 150);
             });
         });
         
-        // Same for navigation buttons
-        const navButtons = document.querySelectorAll('.modal-nav');
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                setTimeout(() => {
-                    const modalImage = document.querySelector('#modalImage');
-                    if (modalImage) {
-                        const modalContainer = modalImage.parentElement;
-                        if (!modalContainer) return;
-                        
-                        // Ensure we have a container with relative positioning
-                        modalContainer.style.position = 'relative';
-                        
-                        // Remove any existing watermarks
-                        const existingWatermarks = document.querySelectorAll('.modal-watermark');
-                        existingWatermarks.forEach(w => w.remove());
-                        
-                        // Add watermark using the same positioning as desktop
-                        const watermarkClone = modalWatermark.cloneNode(true);
-                        watermarkClone.classList.add('modal-watermark');
-                        modalContainer.appendChild(watermarkClone);
-                    }
-                }, 150);
-            });
+        // Add watermark when using navigation buttons in modal
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.modal-nav')) {
+                setTimeout(addWatermarkToModal, 150);
+            }
         });
+        
+        // Additionally, observe for changes to the modal content
+        const modalImageObserver = new MutationObserver(function(mutations) {
+            addWatermarkToModal();
+        });
+        
+        // Start observation when modal opens
+        const modal = document.getElementById('imageModal');
+        if (modal) {
+            modal.addEventListener('click', function(e) {
+                // Don't close when clicking on the modal content
+                if (e.target.closest('.modal-content') && !e.target.closest('.close')) {
+                    e.stopPropagation();
+                }
+            });
+            
+            // Start observing the modal image when it opens
+            document.querySelectorAll('.image-container').forEach(container => {
+                container.addEventListener('click', function() {
+                    setTimeout(() => {
+                        const modalImage = document.getElementById('modalImage');
+                        if (modalImage) {
+                            modalImageObserver.observe(modalImage, { attributes: true });
+                        }
+                    }, 150);
+                });
+            });
+        }
     }
 });
