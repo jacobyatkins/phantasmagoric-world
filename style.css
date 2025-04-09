@@ -674,7 +674,7 @@ body {
     /* Move the image higher in the modal */
     #modalImage, .modal-image {
         position: relative;
-        top: -120px; /* Move image up significantly */
+        top: -180px; /* Move image up significantly */
         margin-bottom: -100px; /* Prevent excess space below */
         max-height: 50vh; /* Ensure image isn't too large */
     }
