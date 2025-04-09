@@ -758,5 +758,23 @@ body {
     .artwork-info {
         padding-top: 10px;
     }
+    /* Simple fix for mobile modal positioning */
+@media (max-width: 768px) {
+    /* Move content higher in viewport */
+    .modal-content {
+        top: 40% !important; /* Move everything higher (was 50%) */
+    }
+    
+    /* Ensure image fits properly */
+    #modalImage {
+        max-height: 60vh;
+    }
+    
+    /* Remove extra spacing */
+    .artwork-info {
+        padding-top: 5px;
+        margin-top: 0;
+    }
+}
 }
 </style>
