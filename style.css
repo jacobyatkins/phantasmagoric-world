@@ -682,7 +682,7 @@ body {
     /* Ensure the artwork info stays with the image */
     .artwork-info {
         position: relative;
-        top: 83px; /* Move info up with the image */
+        top: 75px; /* Move info up with the image */
         margin-top: 10px;
     }
     
