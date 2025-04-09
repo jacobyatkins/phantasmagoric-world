@@ -675,7 +675,7 @@ body {
     /* Position artwork info directly below the image */
     .artwork-info {
         position: relative;
-        margin-top: 10px;
+        margin-top: -20px;
         padding-top: 0;
     }
     
