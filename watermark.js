@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const modalWatermark = document.createElement('img');
         modalWatermark.src = watermarkURL;
         modalWatermark.alt = 'JDA Signature';
-        modalWatermark.classList.add('modal-watermark');
         
         // Add specific CSS to ensure consistent positioning across devices
         const modalStyle = document.createElement('style');
@@ -64,9 +63,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             .modal-watermark {
                 position: absolute !important;
-                /* MOBILE POSITIONING - ADJUST THESE VALUES */
-                bottom: 10% !important; /* Change this value to move up/down */
-                right: 10% !important;   /* Changed from left to right for better positioning */
+                bottom: 10% !important;
+                right: 10% !important;
                 width: ${watermarkSize} !important;
                 height: auto !important;
                 opacity: 0.8 !important;
@@ -81,11 +79,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const modalImage = document.getElementById('modalImage');
             if (modalImage) {
                 // Find the modal display container
-                const modalContainer = modalImage.closest('.modal-display');
-                if (!modalContainer) return;
+                const modalDisplay = modalImage.closest('.modal-display');
+                if (!modalDisplay) return;
                 
                 // Ensure we have a container with relative positioning
-                modalContainer.style.position = 'relative';
+                modalDisplay.style.position = 'relative';
                 
                 // Remove any existing watermarks
                 const existingWatermarks = document.querySelectorAll('.modal-watermark');
@@ -93,52 +91,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // Add watermark
                 const watermarkClone = modalWatermark.cloneNode(true);
-                modalContainer.appendChild(watermarkClone);
+                watermarkClone.classList.add('modal-watermark');
+                modalDisplay.appendChild(watermarkClone);
             }
         }
         
-        // Add the watermark whenever the modal is opened
-        const imageContainers = document.querySelectorAll('.image-container');
-        imageContainers.forEach(container => {
+        // Add event listener for opening the modal
+        document.querySelectorAll('.image-container').forEach(container => {
             container.addEventListener('click', () => {
-                // Wait for modal to appear
+                // Wait for modal to fully open
                 setTimeout(addWatermarkToModal, 150);
             });
         });
         
-        // Add watermark when using navigation buttons in modal
+        // Add event listener for navigation within the modal
         document.addEventListener('click', function(e) {
             if (e.target.closest('.modal-nav')) {
+                // Wait for image to load
                 setTimeout(addWatermarkToModal, 150);
             }
         });
-        
-        // Additionally, observe for changes to the modal content
-        const modalImageObserver = new MutationObserver(function(mutations) {
-            addWatermarkToModal();
-        });
-        
-        // Start observation when modal opens
-        const modal = document.getElementById('imageModal');
-        if (modal) {
-            modal.addEventListener('click', function(e) {
-                // Don't close when clicking on the modal content
-                if (e.target.closest('.modal-content') && !e.target.closest('.close')) {
-                    e.stopPropagation();
-                }
-            });
-            
-            // Start observing the modal image when it opens
-            document.querySelectorAll('.image-container').forEach(container => {
-                container.addEventListener('click', function() {
-                    setTimeout(() => {
-                        const modalImage = document.getElementById('modalImage');
-                        if (modalImage) {
-                            modalImageObserver.observe(modalImage, { attributes: true });
-                        }
-                    }, 150);
-                });
-            });
-        }
     }
 });
