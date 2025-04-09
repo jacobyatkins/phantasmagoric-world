@@ -1,5 +1,5 @@
 /**
- * art-protection.js - Adds watermark signature to all artwork images
+ * watermark.js - Adds watermark signature to all artwork images
  * Created for Phantasmagoric World by Jacob Degen Atkins
  * Enhanced for mobile responsiveness
  */
