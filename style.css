@@ -370,7 +370,7 @@ img {
     .artwork-info {
         position: static;
         width: 100%;
-        padding: 20px 0 0 0;
+        padding: 40px 0 0 0;
         transform: none;
         text-align: center;
     }
@@ -680,11 +680,11 @@ body {
     }
     
     /* Ensure the artwork info stays with the image */
-    .artwork-info {
-        position: relative;
-        top: 20px; /* Move info up with the image */
-        margin-top: 10px;
-    }
+.artwork-info {
+    position: relative;
+    top: 300px; /* New value to position it below the image */
+    margin-top: 20px;
+}
     
     /* Adjust the modal container height */
     .modal-body {
