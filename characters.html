@@ -267,13 +267,7 @@
     
     // Clear previous tags
     tagsContainer.innerHTML = '';
-    
-    // Remove any existing buy button
-    const existingButton = document.querySelector('.buy-print-btn');
-    if (existingButton) {
-        existingButton.remove();
-    }
-    
+        
     // Get artwork data or use defaults
     const artwork = artworkData[artworkId] || {
         title: 'Untitled',
@@ -295,15 +289,6 @@
         tagsContainer.appendChild(tagElement);
     });
     
-    // Only add the Buy Print button for Crustacean Man
-    if (artworkId === 'Crustacean Man') {
-        const buyButton = document.createElement('a');
-        buyButton.href = 'https://www.zazzle.com/z/y14p2z2w';
-        buyButton.target = '_blank';
-        buyButton.className = 'buy-print-btn';
-        buyButton.textContent = 'Buy Print';
-        tagsContainer.parentNode.appendChild(buyButton);
-    }
 }
         
         function navigateImage(direction) {
