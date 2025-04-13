@@ -56,7 +56,7 @@
     </script>
 
 <link rel="stylesheet" href="style.css">
-    
+<link rel="stylesheet" href="navigation-buttons.css">    
 </head>
 <body>
 
@@ -68,18 +68,18 @@
         <h2>Mixed media digital collages by Jacob Degen Atkins</h2>
     </div>
   
-<!-- Dropdown Category Navigation -->
-<div class="category-dropdown">
-    <button class="dropdown-btn">
-        <span id="current-category">Compositions</span>
-        <span class="caret">&#9650;</span>
-    </button>
-    <div class="dropdown-content">
-        <a href="index.html" class="category-option" data-category="showcase">Showcase</a>
-        <a href="compositions.html" class="category-option">Compositions</a>        
-        <a href="characters.html" class="category-option" data-category="characters">Characters</a>
-        <a href="sketchbook.html" class="category-option" data-category="characters">Sketchbook</a>
+<!-- Main Navigation -->
+<div style="display: flex; justify-content: center; align-items: center; margin: 15px auto;">
+    <div class="nav-dropdown">
+        <a href="index.html" class="nav-button active">Gallery</a>
+        <div class="nav-dropdown-content">
+            <a href="index.html">Showcase</a>
+            <a href="characters.html">Characters</a>
+            <a href="compositions.html" class="current">Compositions</a>
+            <a href="sketchbook.html">Sketchbook</a>
+        </div>
     </div>
+    <a href="biography.html" class="nav-button">Biography</a>
 </div>
 
 <div class="gallery">
